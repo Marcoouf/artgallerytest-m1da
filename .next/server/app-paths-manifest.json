@@ -1,0 +1,6 @@
+{
+  "/panier/page": "app/panier/page.js",
+  "/page": "app/page.js",
+  "/artiste/[slug]/page": "app/artiste/[slug]/page.js",
+  "/oeuvre/[slug]/page": "app/oeuvre/[slug]/page.js"
+}

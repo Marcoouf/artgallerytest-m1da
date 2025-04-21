@@ -1,0 +1,34 @@
+# Node modules
+node_modules/
+
+# Production output
+.next/
+out/
+
+# System files
+.DS_Store
+Thumbs.db
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Env files (⚠️ à ne pas versionner si tu en utilises)
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Editor settings
+.vscode/
+.idea/
+*.swp
+
+# macOS / Linux
+*.sublime-workspace
+*.sublime-project
+
+# TypeScript
+*.tsbuildinfo
