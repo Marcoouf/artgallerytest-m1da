@@ -1,86 +1,84 @@
 'use client';
 
-import { useParams } from 'next/navigation';
 import { motion } from 'framer-motion';
+import Image from 'next/image';
+import Link from 'next/link';
+import { notFound } from 'next/navigation';
 
-export default function ArtistPage() {
-  const params = useParams();
-  const slug = (params?.slug as string) || 'alice';
+// Typage explicite d'une œuvre
+type Oeuvre = {
+  titre: string;
+  artiste: string;
+  image: string;
+};
 
-  const artistes = {
-    alice: {
-      nom: 'Alice',
-      bio: 'Alice est une illustratrice passionnée par les portraits stylisés et les paysages doux.',
-      avatar: '/images_site_test/artiste-alice.jpg',
-    },
-    bob: {
-      nom: 'Bob',
-      bio: 'Bob est un photographe amateur de nature et de fleurs en macro.',
-      avatar: '/images_site_test/artiste-bob.jpg',
-    },
-  };
+const œuvres: Oeuvre[] = [
+  {
+    titre: 'Fleur',
+    artiste: 'Alice',
+    image: '/images_site_test/oeuvre-fleur.jpg',
+  },
+  {
+    titre: 'Forêt',
+    artiste: 'Alice',
+    image: '/images_site_test/oeuvre-foret.jpg',
+  },
+  {
+    titre: 'Portrait',
+    artiste: 'Bob',
+    image: '/images_site_test/oeuvre-portrait.jpg',
+  },
+  {
+    titre: 'Paysage',
+    artiste: 'Bob',
+    image: '/images_site_test/oeuvre-paysage.jpg',
+  },
+];
 
-  const œuvres = [
-    { titre: 'Portrait féminin', artiste: 'Alice', image: '/images_site_test/oeuvre-portrait.jpg' },
-    { titre: 'Forêt brumeuse', artiste: 'Bob', image: '/images_site_test/oeuvre-foret.jpg' },
-    { titre: 'Paysage vallonné', artiste: 'Alice', image: '/images_site_test/oeuvre-paysage.jpg' },
-    { titre: 'Fleur macro', artiste: 'Bob', image: '/images_site_test/oeuvre-fleur.jpg' },
-  ];
+export default function Page({ params }: { params: { slug: string } }) {
+  const slug = params.slug;
+  const nomArtiste = slug.charAt(0).toUpperCase() + slug.slice(1);
 
-  const artiste = artistes[slug];
-
-  if (!artiste) {
-    return <div className="p-10 text-center text-red-500">Artiste introuvable</div>;
-  }
-
-  const œuvresDeLArtiste = œuvres.filter(
-    (o) => o.artiste.toLowerCase() === artiste.nom.toLowerCase()
+  const œuvresDeLArtiste = œuvres.filter((œuvre) =>
+    œuvre.artiste.toLowerCase() === slug.toLowerCase()
   );
 
+  if (œuvresDeLArtiste.length === 0) return notFound();
+
   return (
-    <div className="min-h-screen bg-white text-gray-900">
-      <section className="p-10 text-center bg-gray-100">
-        <img
-          src={artiste.avatar}
-          alt={artiste.nom}
-          className="w-24 h-24 rounded-full mx-auto mb-4 object-cover"
-        />
-        <h1 className="text-3xl font-bold">{artiste.nom}</h1>
-        <p className="text-sm text-gray-600 max-w-xl mx-auto mt-2">{artiste.bio}</p>
-      </section>
-
-      <section className="p-8">
-        <h2 className="text-2xl font-semibold mb-6 text-center">Œuvres de {artiste.nom}</h2>
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-          {œuvresDeLArtiste.map((œuvre, i) => (
-            <motion.div
-              key={i}
-              className="border rounded-2xl shadow hover:shadow-lg transition"
-              whileHover={{ scale: 1.03 }}
-            >
-              <img src={œuvre.image} alt={œuvre.titre} className="rounded-t-2xl w-full h-48 object-cover" />
-              <div className="p-4">
-                <h4 className="font-bold">{œuvre.titre}</h4>
-                <a
-                  href={`/oeuvre/${œuvre.titre.toLowerCase().replaceAll(' ', '-').normalize('NFD').replace(/[̀-ͯ]/g, '')}`}
-                  className="text-sm text-blue-600 hover:underline"
-                >
-                  Voir formats
-                </a>
-              </div>
-            </motion.div>
-          ))}
-        </div>
-      </section>
-
-      <div className="text-center my-12">
-        <motion.a
-          href="/"
-          whileHover={{ scale: 1.05 }}
-          className="inline-block px-6 py-2 bg-gray-900 text-white rounded-2xl shadow hover:shadow-lg transition font-medium text-sm"
-        >
+    <div className="p-8 max-w-6xl mx-auto">
+      <Link href="/" className="inline-block mb-4">
+        <div className="bg-black text-white px-4 py-2 rounded-xl hover:bg-gray-800 transition">
           ← Retour à la galerie
-        </motion.a>
+        </div>
+      </Link>
+      <h1 className="text-3xl font-bold mb-6">Œuvres de {nomArtiste}</h1>
+
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+        {œuvresDeLArtiste.map((œuvre, i) => (
+          <motion.div
+            key={i}
+            whileHover={{ scale: 1.03 }}
+            className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition duration-300"
+          >
+            <Image
+              src={œuvre.image}
+              alt={œuvre.titre}
+              width={500}
+              height={300}
+              className="w-full h-64 object-cover"
+            />
+            <div className="p-4">
+              <h2 className="text-xl font-semibold mb-2">{œuvre.titre}</h2>
+              <Link
+                href={`/oeuvre/${encodeURIComponent(œuvre.titre.toLowerCase())}`}
+                className="inline-block bg-black text-white px-4 py-2 rounded-xl hover:bg-gray-800 transition"
+              >
+                Voir formats
+              </Link>
+            </div>
+          </motion.div>
+        ))}
       </div>
     </div>
   );
