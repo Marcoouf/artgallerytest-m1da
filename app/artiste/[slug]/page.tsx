@@ -5,8 +5,6 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 
-const MotionDiv = motion.div;
-
 type Oeuvre = {
   titre: string;
   artiste: string;
@@ -57,7 +55,7 @@ export default function Page({ params }: { params: { slug: string } }) {
 
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
         {œuvresDeLArtiste.map((œuvre, i) => (
-          <MotionDiv
+          <motion.div
             key={i}
             whileHover={{ scale: 1.03 }}
             className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition duration-300"
@@ -78,7 +76,7 @@ export default function Page({ params }: { params: { slug: string } }) {
                 Voir formats
               </Link>
             </div>
-          </MotionDiv>
+          </motion.div>
         ))}
       </div>
     </div>
