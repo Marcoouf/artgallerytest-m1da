@@ -4,7 +4,10 @@ import { motion } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import type { HTMLMotionProps } from 'framer-motion';
+import type { DetailedHTMLProps, HTMLAttributes } from 'react';
+
+// Correction : typage explicite pour permettre className avec motion.div
+const MotionDiv = motion<DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>>('div');
 
 type Oeuvre = {
   titre: string;
@@ -13,36 +16,18 @@ type Oeuvre = {
 };
 
 const œuvres: Oeuvre[] = [
-  {
-    titre: 'Fleur',
-    artiste: 'Alice',
-    image: '/images_site_test/oeuvre-fleur.jpg',
-  },
-  {
-    titre: 'Forêt',
-    artiste: 'Alice',
-    image: '/images_site_test/oeuvre-foret.jpg',
-  },
-  {
-    titre: 'Portrait',
-    artiste: 'Bob',
-    image: '/images_site_test/oeuvre-portrait.jpg',
-  },
-  {
-    titre: 'Paysage',
-    artiste: 'Bob',
-    image: '/images_site_test/oeuvre-paysage.jpg',
-  },
+  { titre: 'Fleur', artiste: 'Alice', image: '/images_site_test/oeuvre-fleur.jpg' },
+  { titre: 'Forêt', artiste: 'Alice', image: '/images_site_test/oeuvre-foret.jpg' },
+  { titre: 'Portrait', artiste: 'Bob', image: '/images_site_test/oeuvre-portrait.jpg' },
+  { titre: 'Paysage', artiste: 'Bob', image: '/images_site_test/oeuvre-paysage.jpg' },
 ];
-
-const MotionDiv = (props: HTMLMotionProps<'div'>) => <motion.div {...props} />;
 
 export default function Page({ params }: { params: { slug: string } }) {
   const slug = params.slug;
   const nomArtiste = slug.charAt(0).toUpperCase() + slug.slice(1);
 
-  const œuvresDeLArtiste = œuvres.filter((œuvre) =>
-    œuvre.artiste.toLowerCase() === slug.toLowerCase()
+  const œuvresDeLArtiste = œuvres.filter(
+    (œuvre) => œuvre.artiste.toLowerCase() === slug.toLowerCase()
   );
 
   if (œuvresDeLArtiste.length === 0) return notFound();
@@ -54,6 +39,7 @@ export default function Page({ params }: { params: { slug: string } }) {
           ← Retour à la galerie
         </div>
       </Link>
+
       <h1 className="text-3xl font-bold mb-6">Œuvres de {nomArtiste}</h1>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
