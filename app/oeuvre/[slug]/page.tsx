@@ -24,6 +24,20 @@ export default function OeuvrePage() {
       artiste: 'Alice',
       formats: ['A4', 'A3']
     },
+    {
+      titre: 'Bouquet fleurs',
+      slug: 'bouquet-fleurs',
+      image: '/images_site_test/oeuvre-fleur.png',
+      artiste: 'Alice',
+      formats: ['A4', 'A3']
+    },
+    {
+      titre: 'Paysage plage',
+      slug: 'paysage-plage',
+      image: '/images_site_test/oeuvre-paysage.png',
+      artiste: 'Bob',
+      formats: ['A4', 'A3']
+    },
   ];
 
   const slug = params.slug?.toString(); // 🔧 correction ici
