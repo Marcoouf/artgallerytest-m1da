@@ -64,7 +64,7 @@ export default function HomePage() {
               <img
                 src={œuvre.image}
                 alt={œuvre.titre}
-                className="rounded-t-xl w-full h-48 object-cover"
+                className="rounded-t-xl w-full h-48 object-contain"
               />
               <div className="p-4">
                 <h3 className="font-semibold text-lg">{œuvre.titre}</h3>
@@ -93,7 +93,7 @@ export default function HomePage() {
               <img
                 src={artiste.image}
                 alt={artiste.nom}
-                className="rounded-t-xl w-full h-48 object-cover"
+                className="rounded-t-xl w-full h-48 object-contain"
               />
               <div className="p-4">
                 <h4 className="font-semibold">{artiste.nom}</h4>

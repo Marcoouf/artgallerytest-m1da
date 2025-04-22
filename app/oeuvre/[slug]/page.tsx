@@ -54,7 +54,7 @@ export default function OeuvrePage() {
 
   return (
     <div className="p-10 max-w-xl mx-auto">
-      <img src={œuvre.image} alt={œuvre.titre} className="w-full h-96 object-cover rounded-xl mb-6" />
+      <img src={œuvre.image} alt={œuvre.titre} className="w-full h-96 object-contain rounded-xl mb-6" />
       <h1 className="text-3xl font-bold mb-2">{œuvre.titre}</h1>
       <p className="text-gray-600 mb-4">Par {œuvre.artiste}</p>
 

@@ -54,7 +54,7 @@ export default function Page({ params }: { params: { slug: string } }) {
               alt={œuvre.titre}
               width={500}
               height={300}
-              className="w-full h-64 object-cover"
+              className="w-full h-64 object-contain"
             />
             <div className="p-4">
               <h2 className="text-xl font-semibold mb-2">{œuvre.titre}</h2>
