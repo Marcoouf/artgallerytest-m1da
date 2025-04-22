@@ -1,13 +1,13 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { motion, type HTMLMotionProps } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import type { DetailedHTMLProps, HTMLAttributes } from 'react';
+import type { ComponentProps } from 'react';
 
-// Correction : typage explicite pour permettre className avec motion.div
-const MotionDiv = motion<DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>>('div');
+// ✅ Cette version hérite correctement de toutes les props HTML + motion
+const MotionDiv = motion.div as (props: ComponentProps<'div'> & HTMLMotionProps<'div'>) => JSX.Element;
 
 type Oeuvre = {
   titre: string;
