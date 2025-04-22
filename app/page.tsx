@@ -16,6 +16,20 @@ export default function HomePage() {
       image: '/images_site_test/oeuvre-foret.png',
       categorie: 'photo',
     },
+    {
+      titre: 'Bouquet fleurs',
+      slug: 'bouquet-fleurs',
+      image: '/images_site_test/oeuvre-fleur.png',
+      artiste: 'Alice',
+      formats: ['A4', 'A3']
+    },
+    {
+      titre: 'Paysage plage',
+      slug: 'paysage-plage',
+      image: '/images_site_test/oeuvre-paysage.png',
+      artiste: 'Bob',
+      formats: ['A4', 'A3']
+    },
   ];
 
   const artistes = [
