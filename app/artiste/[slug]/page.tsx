@@ -16,10 +16,10 @@ type Oeuvre = {
 };
 
 const œuvres: Oeuvre[] = [
-  { titre: 'Fleur', artiste: 'Alice', image: '/images_site_test/oeuvre-fleur.jpg' },
-  { titre: 'Forêt', artiste: 'Alice', image: '/images_site_test/oeuvre-foret.jpg' },
-  { titre: 'Portrait', artiste: 'Bob', image: '/images_site_test/oeuvre-portrait.jpg' },
-  { titre: 'Paysage', artiste: 'Bob', image: '/images_site_test/oeuvre-paysage.jpg' },
+  { titre: 'Fleur', artiste: 'Alice', image: '/images_site_test/oeuvre-fleur.png' },
+  { titre: 'Forêt', artiste: 'Alice', image: '/images_site_test/oeuvre-foret.png' },
+  { titre: 'Portrait', artiste: 'Bob', image: '/images_site_test/oeuvre-portrait.png' },
+  { titre: 'Paysage', artiste: 'Bob', image: '/images_site_test/oeuvre-paysage.png' },
 ];
 
 export default function Page({ params }: { params: { slug: string } }) {

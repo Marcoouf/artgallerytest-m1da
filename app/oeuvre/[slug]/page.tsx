@@ -13,14 +13,14 @@ export default function OeuvrePage() {
     {
       titre: 'Forêt brumeuse',
       slug: 'foret-brumeuse',
-      image: '/images_site_test/oeuvre-foret.jpg',
+      image: '/images_site_test/oeuvre-foret.png',
       artiste: 'Bob',
       formats: ['A4', 'A3', '30x40cm']
     },
     {
       titre: 'Portrait féminin',
       slug: 'portrait-feminin',
-      image: '/images_site_test/oeuvre-portrait.jpg',
+      image: '/images_site_test/oeuvre-portrait.png',
       artiste: 'Alice',
       formats: ['A4', 'A3']
     },

@@ -7,13 +7,13 @@ export default function HomePage() {
     {
       titre: 'Portrait féminin',
       slug: 'portrait-feminin',
-      image: '/images_site_test/oeuvre-portrait.jpg',
+      image: '/images_site_test/oeuvre-portrait.png',
       categorie: 'illustration',
     },
     {
       titre: 'Forêt brumeuse',
       slug: 'foret-brumeuse',
-      image: '/images_site_test/oeuvre-foret.jpg',
+      image: '/images_site_test/oeuvre-foret.png',
       categorie: 'photo',
     },
   ];
@@ -23,13 +23,13 @@ export default function HomePage() {
       nom: 'Alice',
       bio: 'Portraits stylisés et paysages doux.',
       slug: 'alice',
-      image: '/images_site_test/artiste-alice.jpg',
+      image: '/images_site_test/artiste-alice.png',
     },
     {
       nom: 'Bob',
       bio: 'Photographie de nature et macro.',
       slug: 'bob',
-      image: '/images_site_test/artiste-bob.jpg',
+      image: '/images_site_test/artiste-bob.png',
     },
   ];
 
